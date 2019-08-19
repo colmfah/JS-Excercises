@@ -93,7 +93,7 @@ const fight = (inst) => {
 	if (tempValue <= 8){
 		console.log('score:', tempValue, inst)
 	}
-		if (tempValue > 3){
+		if (tempValue > 8){
 			overEight++ //this var gives the rank of the beltNo that I want but I don't how how to export it
 			console.log('triggered', overEight)
 			// if (overEight > 7){
@@ -114,6 +114,19 @@ const fight = (inst) => {
 let m = setInterval(counter, 1000)
 }
 
-fight(colm)
+// fight(colm)
 
 //could be improved by removing beltNo var from display and make it stop running at right point if there is a black belt
+
+let names = ['apples', 'bananas', 'bread', 'cookies', 'broccoli', 'onions']
+let prices = [20, 12, 24, 53, 32, 15]
+let discounts = [0, 0, 10, 25, 0, 5]
+
+//Also add the function applyDiscount() inside Product that takes a parameter discount and applies the discount to the Product's price (discount should be a number, where 10 represents 10% discount)
+
+class Product {
+	constructor(name, price){
+		this.name = name
+		this.price = price
+	}
+}
