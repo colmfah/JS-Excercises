@@ -50,3 +50,70 @@ const makeEmployees5 = (nameArr, jobArr) => {return nameArr.map((e, i) => {retur
 //   Employee { name: 'Bernard', job: 'Biz Manager' },
 //   Employee { name: 'Catherine', job: 'Cleaner' },
 //   Employee { name: 'David', job: 'Director' } ]
+
+
+//#020503
+
+let belts = ['white', 'yellow', 'orange', 'green', 'blue', 'brown', 'black']
+
+class Karateka {
+	constructor(name){
+		this.name = name
+		this.beltNo = [0, 1, 2, 3, 4, 5, 6]
+		this.belt = belts[this.beltNo[0]]
+	}
+
+
+increaseRank(){
+
+	this.beltNo.shift()
+	this.belt = belts[this.beltNo[0]]
+
+	// I tried to include beltNo array here and change value of this.belt from here but it wouldn't work and I don't understand why
+}
+
+}
+
+let colm = new Karateka('colm')
+
+const fight = (inst) => {
+	let count = 1
+	let tempValue = 0
+	let overEight = 0
+	let counter = () => {
+
+		if (overEight == 6){
+			clearInterval(m)
+		} //stopping execution after one more run. Why?
+
+		// if (this.belt = 'black'){
+		// 	return 'Game Over'
+		// } this causes an infinite loop. Why?
+	tempValue = Math.floor(Math.random()*10) + 1
+	if (tempValue <= 8){
+		console.log('score:', tempValue, inst)
+	}
+		if (tempValue > 3){
+			overEight++ //this var gives the rank of the beltNo that I want but I don't how how to export it
+			console.log('triggered', overEight)
+			// if (overEight > 7){
+			// 	return 'GAME OVER'
+			// } causes infinite loop. Why?
+			inst.increaseRank()
+			console.log('INCREASE')
+			console.log('score:', tempValue, inst);
+		}
+		count++
+
+		if (count == 20){
+			clearInterval(m)
+		}
+
+	}
+
+let m = setInterval(counter, 1000)
+}
+
+fight(colm)
+
+//could be improved by removing beltNo var from display and make it stop running at right point if there is a black belt
