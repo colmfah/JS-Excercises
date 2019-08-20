@@ -66,35 +66,80 @@ const haveShower = () => {
 // ready // after 6 seconds
 //
 
-
-getUp().then(res => {
-	console.log(res)
-	haveShower().then(res => {
+let goodMorning = () => {
+	getUp().then(res => {
 		console.log(res)
-		haveBreakfast().then(res =>{
+		haveShower().then(res => {
 			console.log(res)
-			brushTeeth().then(res => {
-				console.log(res);
+			haveBreakfast().then(res =>{
+				console.log(res)
+				brushTeeth().then(res => {
+					console.log(res);
+				})
 			})
 		})
 	})
-})
+}
+
+// goodMorning()
+
+
+
+//20602 Create a function makeCoffee that resolves with coffee after 10 seconds.
+
+// let a = new Promise((res, rej) => {
+//   res('a')
+// })
+
+
+const makeCoffee = () => {
+	return new Promise(	(resolve, reject) => {
+		return setTimeout(	() => {resolve('coffee')}, 10000			)
+	}			)
+}
+
+//Create a function makeEggs that resolves with eggs after 5 seconds.
+
+const makeEggs = () => {
+	return new Promise(	(resolve, reject) => {
+		return setTimeout(	() => {resolve('eggs')}, 5000			)
+	}	)
+}
+
+//Create a function makeToast that resolves with toast after 6 seconds.
+
+const makeToast = () => {
+	return new Promise (	(resolve, reject) => {
+		return setTimeout(	() => {resolve('toast')}, 6000		)
+	}	)
+}
+
+//Create a function makeBacon that resolves with bacon after 8 seconds.
+
+const makeBacon = () => {
+	return new Promise(	(resolve, reject) => {
+		return setTimeout(	() => {resolve('bacon')}, 8000		)
+	}		)
+}
+
+Promise.all([makeCoffee(), makeEggs(), makeToast(), makeBacon()]).then(res => {console.log(res)})
 
 
 
 
-// promise1
-//   .then((data) => {
-//     console.log(data);  // Promise1 resolved
-//     return promise2;
-//   })
-//   .then((data) => {
-//     console.log(data);  // Promise2 resolved
-//     return promise3;
-//   })
-//   .then((data) => {
-//     console.log(data);
-//   })
-//   .catch((error) => {
-//     console.log(error);  // Promise3 rejected
-//   });
+
+
+
+
+
+
+
+
+
+// const brushTeeth = () => {
+// 	return new Promise(	(resolve) => {
+// 		return setTimeout(	() => {
+// 			resolve('ready')
+// 		}, 1000	)
+// 	}	)
+// }
