@@ -122,24 +122,23 @@ const makeBacon = () => {
 	}		)
 }
 
-Promise.all([makeCoffee(), makeEggs(), makeToast(), makeBacon()]).then(res => {console.log(res)})
+// Promise.all([makeCoffee(), makeEggs(), makeToast(), makeBacon()]).then(res => {console.log(res)})
+
+//020603 Create 3 racing horses: "Speedy", "Jackpot" and "Red". Each one will finish the race and resolve with its name after a random time between 1 and 4 seconds.
+
+let speedy = () => {return new Promise (	(resolve, reject) => {
+	return setTimeout(	() => {resolve('Speedy')}, Math.floor(Math.random() * 4000) + 1000	)
+}			)}
 
 
+let jackpot = () => {return new Promise (	(resolve, reject) => {
+	return setTimeout(	() => {resolve('Jackpot')}, Math.floor(Math.random() * 4000) + 1000	)
+}			)}
 
 
+let red = () => {return new Promise (	(resolve, reject) => {
+	return setTimeout(	() => {resolve('Red')}, Math.floor(Math.random() * 4000) + 1000	)
+}			)}
 
 
-
-
-
-
-
-
-
-// const brushTeeth = () => {
-// 	return new Promise(	(resolve) => {
-// 		return setTimeout(	() => {
-// 			resolve('ready')
-// 		}, 1000	)
-// 	}	)
-// }
+Promise.race([speedy(), jackpot(), red()]).then(res => console.log(res))
