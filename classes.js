@@ -62,16 +62,12 @@ class Karateka {
 		this.beltNo = [0, 1, 2, 3, 4, 5, 6]
 		this.belt = belts[this.beltNo[0]]
 	}
-
-
 increaseRank(){
-
 	this.beltNo.shift()
 	this.belt = belts[this.beltNo[0]]
 
 	// I tried to include beltNo array here and change value of this.belt from here but it wouldn't work and I don't understand why
 }
-
 }
 
 let colm = new Karateka('colm')
@@ -118,15 +114,48 @@ let m = setInterval(counter, 1000)
 
 //could be improved by removing beltNo var from display and make it stop running at right point if there is a black belt
 
-let names = ['apples', 'bananas', 'bread', 'cookies', 'broccoli', 'onions']
+//#020504
+
+let names2 = ['apples', 'bananas', 'bread', 'cookies', 'broccoli', 'onions']
 let prices = [20, 12, 24, 53, 32, 15]
 let discounts = [0, 0, 10, 25, 0, 5]
 
-//Also add the function applyDiscount() inside Product that takes a parameter discount and applies the discount to the Product's price (discount should be a number, where 10 represents 10% discount)
 
 class Product {
 	constructor(name, price){
 		this.name = name
 		this.price = price
 	}
+	applyDiscount(discount){
+		this. price = this.price.map((e, i) => e*(1 - discount[i]/100))
+		return this.name.map(	(e , i) =>	[{name: e, price: this.price[i]}]	)
+	}
 }
+
+
+class Receipt {
+	constructor(products){
+		this.products = products
+	}
+	calcTotal(products){
+		let priceArray = products.price
+		return priceArray.reduce(	(a , b) => a + b	)
+	}
+}
+
+
+getReceipt = (names, prices, discounts) => {
+	let myPurchases = new Product(names, prices)
+	myPurchases.applyDiscount(discounts)
+
+let newFormat = myPurchases.name.map((e,i) => {return{name: e, price: myPurchases.price[i]}})
+
+	let myReceipt = new Receipt(newFormat)
+
+console.log(myReceipt.products.map(e => {return {name: e.name, price: e.price} }));
+
+console.log('Total:',myReceipt.calcTotal(myPurchases));
+
+}
+
+getReceipt(names2, prices, discounts)
