@@ -33,164 +33,42 @@ return arr.map(e => {return {currency: e.split('')[0], value: Number(e.split('')
 //20303 From the array names return only the palindromes (a palindrome is a word that reads exactly the same from left to right and backwards).
 //['anna', 'bob']
 
-const palTester = (arr) =>{
-
-	return arr.filter(e => e == e.split('').reverse('').join(''))
+const palTester = (arr) => arr.filter(e => e == e.split('').reverse('').join(''))
 
 	//	return arr.filter(e => e.split('') == e.split('').reverse('')) didn't work and I don't understand why
-}
+
 
 //20304
 // Create a function that, given any number (positive integer) returns the number in Roman numerals.
 
-const romanMeUp = (num) => {
-	let arrayAnswer = []
-	let remainder = num
+let romanNumerals = [
+	{v:1000, s:'M'},
+	{v:900, s:'CM'},
+	{v:500, s:'D'},
+	{v:400, s:'CD'},
+	{v:100, s:'C'},
+	{v:90, s:'XC'},
+	{v:50, s:'L'},
+	{v:40, s:'XL'},
+	{v:10, s:'X'},
+	{v:9, s:'IX'},
+	{v:5, s:'V'},
+	{v:4, s:'IV'},
+	{v:1, s:'I'}]
 
-while (remainder >= 1000){
-	arrayAnswer.push('M')
-	remainder = remainder - 1000
-}
-
-while (remainder >= 900){
-	arrayAnswer.push('CM')
-	remainder = remainder - 900
-}
-
-while (remainder >= 800){
-	arrayAnswer.push('DCCC')
-	remainder = remainder - 800
-}
-
-while (remainder >= 700){
-	arrayAnswer.push('DCC')
-	remainder = remainder - 700
-}
-
-while (remainder >= 600){
-	arrayAnswer.push('DC')
-	remainder = remainder - 600
-}
-
-while (remainder >= 500){
-	arrayAnswer.push('D')
-	remainder = remainder - 500
-}
-
-while (remainder >= 400){
-	arrayAnswer.push('CD')
-	remainder = remainder - 400
-}
-
-while (remainder >= 300){
-	arrayAnswer.push('CCC')
-	remainder = remainder - 300
-}
-
-while (remainder >= 200){
-	arrayAnswer.push('CC')
-	remainder = remainder - 200
-}
-
-while (remainder >= 100){
-	arrayAnswer.push('C')
-	remainder = remainder - 100
-}
-
-while (remainder >= 90){
-	arrayAnswer.push('XC')
-	remainder = remainder - 90
-}
-
-while (remainder >= 80){
-	arrayAnswer.push('LXXX')
-	remainder = remainder - 80
-}
-
-while (remainder >= 70){
-	arrayAnswer.push('LXX')
-	remainder = remainder - 70
-}
-
-
-while (remainder >= 60){
-	arrayAnswer.push('LX')
-	remainder = remainder - 60
-}
-
-while (remainder >= 50){
-	arrayAnswer.push('L')
-	remainder = remainder - 50
-}
-
-while (remainder >= 40){
-	arrayAnswer.push('XL')
-	remainder = remainder - 40
-}
-
-while (remainder >= 30){
-	arrayAnswer.push('XXX')
-	remainder = remainder - 30
-}
-
-while (remainder >= 20){
-	arrayAnswer.push('XX')
-	remainder = remainder - 20
-}
-
-while (remainder >= 10){
-	arrayAnswer.push('X')
-	remainder = remainder - 10
-}
-
-while (remainder >= 9){
-	arrayAnswer.push('IX')
-	remainder = remainder - 9
-}
-
-while (remainder >= 8){
-	arrayAnswer.push('VIII')
-	remainder = remainder - 8
-}
-
-while (remainder >= 7){
-	arrayAnswer.push('VII')
-	remainder = remainder - 7
-}
-
-while (remainder >= 6){
-	arrayAnswer.push('VI')
-	remainder = remainder - 6
-}
-
-while (remainder >= 5){
-	arrayAnswer.push('V')
-	remainder = remainder - 5
-}
-
-while (remainder >= 4){
-	arrayAnswer.push('IV')
-	remainder = remainder - 4
-}
-
-while (remainder >= 3){
-	arrayAnswer.push('III')
-	remainder = remainder - 3
-}
-
-while (remainder >= 2){
-	arrayAnswer.push('II')
-	remainder = remainder - 2
-}
-
-while (remainder >= 1){
-	arrayAnswer.push('I')
-	remainder = remainder - 1
-}
-
-	return arrayAnswer.join('')
-}
-
+	const getRomans = (x, arr) => {
+		let output = ''
+		let i = 0
+		while (i < arr.length) {
+			if (x >= arr[i].v) {
+				x -= arr[i].v
+				output += arr[i].s
+			} else {
+				i++
+			}
+		}
+		return output
+	}
 
 
 // 20305 Create a function that loops numbers from 0 to 20. For each number, if the number is a multiple of 3, log fizz; if the number is a multiple of 5, log buzz; if the number is a multiple of both 3 and 5, log fizzbuzz; for all other numbers, log the number itself.
@@ -227,4 +105,51 @@ const a = (n1, n2) => n1 + n2
 
 const b = (	func, num1, num2, num3) => {
 	return func(num1, num2) - num3
+
+}
+
+
+
+
+
+// 1 => I
+// 2 => II
+// 3 => III
+// 4 => IV
+// 5 => V
+// 6 => VI
+// 7 => VII
+// 8 => VIII
+// 9 => IX
+// 10 => X
+// 11 => XI
+// 20 => XX
+// 40 => XL
+// 50 => L
+// 100 => C
+// 500 => D
+// 1000 => M
+
+
+const roman = (num) => {
+
+	let remainder = num
+	let answer = []
+	let romanValues = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L', 'C', 'D', 'M']
+	let modernValues = [1, 4, 5, 9, 10, 40, 50, 100, 500, 1000]
+
+	let romanRev = romanValues.reverse()
+	let modernRev = modernValues.reverse()
+
+modernRev.forEach((e,i) => {while (remainder > e){
+	answer.push(romanRev[i])
+	remainder = remainder - e
+
+}}
+
+)
+
+
+return answer
+
 }
