@@ -13,15 +13,18 @@ const roundy = (num) => Math.round(num)
 //20202 Create a function that returns all products with their prices rounded
 // [{name:'bread',price:4},{name:'orange',price:1},{name:'gum',price:3}]
 
-const roundyProds = (arr) => {
+const roundyProds = (arr, func) => {
 
-const roundy = (num) => Math.round(num) //should I declare within function or use as parameter in roundyProds function. Which is better? why?
+// const roundy = (num) => Math.round(num) //should I declare within function or use as parameter in roundyProds function. Which is better? why?
+
 
 	return arr.map(e => {
-		return {name: e.name, price: roundy(e.price)}
+		return {name: e.name, price: func(e.price)}
 	} )
 
 }
+
+roundyProds(products, roundy)
 
 
 // 20203 Create a function that takes 2 numbers as parameters and returns the first number rounded to the number of decimals defined by the second parameter.
