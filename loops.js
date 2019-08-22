@@ -187,42 +187,16 @@ return temp.map(x => x + 1)
 // 	27.58 => [10, 10, 5, 1, 1, 0.5, 0.05, 0.01, 0.01]
 
 
-let currDen = (num) => {
-let number = num
-let solution = []
-
-while (number >= 10){
-	solution.push(10)
-	number = number - 10
+let denominationFunction = (arr,num) => {
+	let total = num
+	let newArray = []
+	arr.forEach((e,i) => {
+		while (num.toFixed(2) >= e) {
+			newArray.push(e)
+			num = num -= e
+		}
+		console.log('num', num)
+	}
+	)
+	return newArray
 }
-
-while (number >= 5){
-	solution.push(5)
-	number = number - 5
-}
-
-while (number >= 1){
-	solution.push(1)
-	number = number - 1
-}
-
-while (number >= 0.5){
-	solution.push(0.5)
-	number = number - 0.5
-}
-
-
-while (number >= 0.05){
-	solution.push(0.05)
-	number = number - 0.05
-}
-
-
-while (number.toFixed(2) >= 0.01){
-	solution.push(0.01)
-	number = number - 0.01
-}
-
-
-return solution
-										}
