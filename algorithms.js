@@ -91,6 +91,8 @@ while (number <=20){
 
 }
 
+loopy()
+
 //works but has an undefined at the end. I don't know why
 
 
